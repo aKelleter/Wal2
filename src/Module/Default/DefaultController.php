@@ -9,7 +9,7 @@ use App\UI\Layout;
 final class DefaultController
 {
     /**
-     * Contrôleur de la page public/git/index.php
+     * Contrôleur de la page public/default/index.php
      * 
      * @return void 
      */
@@ -52,6 +52,12 @@ final class DefaultController
         $tpl->pparse('display', 'main');
     }
 
+    /**
+     * Contrôleur des pages public/default/page1.php, page2.php, page3.php
+     * 
+     * @param array $datas 
+     * @return void 
+     */
     public static function page(array $datas): void
     {
         $pageTitle = 'WaL-2 - '.$datas['title'];
