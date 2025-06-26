@@ -1,0 +1,149 @@
+1️⃣ Boucle sur une liste d’éléments (exemple : liste de commandes Git)
+Fichier template HTML : templates/commandes.html
+
+<h2>{TITLE}</h2>
+<ul>
+<!-- BEGIN COMMANDS_BLOCK -->
+    <li>
+        <b>{CMD}</b> : {DESC}
+    </li>
+<!-- END COMMANDS_BLOCK -->
+</ul>
+
+PHP pour générer la liste
+
+use App\UI\Template;
+
+$tpl = new Template(ROOT_PATH . '/templates');
+$tpl->setFile('main', 'commandes.html');
+
+$tpl->setVar('TITLE', 'Liste de commandes Git');
+$tpl->setBlock('main', 'COMMANDS_BLOCK');
+
+// Exemple de tableau à afficher
+$commandes = [
+    ['CMD' => 'git status',   'DESC' => 'Afficher l’état du repo'],
+    ['CMD' => 'git log',      'DESC' => 'Afficher l’historique'],
+    ['CMD' => 'git branch',   'DESC' => 'Lister les branches'],
+];
+
+// Génération dynamique de la liste
+foreach ($commandes as $cmd) {
+    $tpl->setVar([
+        'CMD'  => $cmd['CMD'],
+        'DESC' => $cmd['DESC'],
+    ]);
+    // Ajoute ce bloc à la variable COMMANDS_BLOCK (append = true)
+    $tpl->parse('COMMANDS_BLOCK', 'COMMANDS_BLOCK', true);
+}
+
+$tpl->pparse('out', 'main');
+
+
+2️⃣ Inclusion de sous-templates : header/footer/layout
+Fichier principal : layout.html
+
+<!-- BEGIN HEADER_BLOCK -->{HEADER}<!-- END HEADER_BLOCK -->
+<main>
+    {CONTENT}
+</main>
+<!-- BEGIN FOOTER_BLOCK -->{FOOTER}<!-- END FOOTER_BLOCK -->
+
+Fichiers header.html et footer.html
+
+<!-- header.html -->
+<header><h1>{TITLE}</h1></header>
+
+<!-- footer.html -->
+<footer>Application Git.Docs - {YEAR}</footer>
+
+PHP
+
+use App\UI\Template;
+
+$tpl = new Template(ROOT_PATH . '/templates');
+$tpl->setFile([
+    'layout' => 'layout.html',
+    'header' => 'header.html',
+    'footer' => 'footer.html',
+]);
+
+$tpl->setVar([
+    'TITLE'   => 'Page d’exemple avancé',
+    'YEAR'    => date('Y'),
+    'CONTENT' => '<p>Ici du contenu dynamique</p>'
+]);
+
+// Préparer les sous-blocs
+$tpl->setBlock('layout', 'HEADER_BLOCK');
+$tpl->setBlock('layout', 'FOOTER_BLOCK');
+
+// Injecter les sous-templates dans les blocs
+$tpl->parse('HEADER_BLOCK', 'header');
+$tpl->parse('FOOTER_BLOCK', 'footer');
+
+// Afficher
+$tpl->pparse('out', 'layout');
+
+3️⃣ Bloc conditionnel (ex : afficher un message si la liste est vide)
+template :
+
+<h2>Liste</h2>
+<ul>
+<!-- BEGIN ITEMS_BLOCK -->
+    <li>{ITEM}</li>
+<!-- END ITEMS_BLOCK -->
+</ul>
+<!-- BEGIN EMPTY_BLOCK -->
+<div class="alert alert-warning">{EMPTY_MSG}</div>
+<!-- END EMPTY_BLOCK -->
+
+PHP :
+
+$tpl->setFile('main', 'liste.html');
+$tpl->setBlock('main', 'ITEMS_BLOCK');
+$tpl->setBlock('main', 'EMPTY_BLOCK');
+
+$items = []; // Tableau vide pour l’exemple
+
+if (empty($items)) {
+    $tpl->setVar('EMPTY_MSG', 'Aucun élément trouvé.');
+    $tpl->parse('EMPTY_BLOCK', 'EMPTY_BLOCK');
+} else {
+    foreach ($items as $item) {
+        $tpl->setVar('ITEM', htmlspecialchars($item));
+        $tpl->parse('ITEMS_BLOCK', 'ITEMS_BLOCK', true);
+    }
+}
+
+$tpl->pparse('out', 'main');
+
+
+4️⃣ Astuce pour menu dynamique
+
+$tpl->setFile('main', 'menu.html');
+$tpl->setBlock('main', 'LINK_BLOCK');
+
+$menu = [
+    ['URL' => 'home.php', 'LABEL' => 'Accueil'],
+    ['URL' => 'commandes.php', 'LABEL' => 'Commandes'],
+    // ...
+];
+
+foreach ($menu as $entry) {
+    $tpl->setVar([
+        'URL'   => $entry['URL'],
+        'LABEL' => $entry['LABEL']
+    ]);
+    $tpl->parse('LINK_BLOCK', 'LINK_BLOCK', true);
+}
+$tpl->pparse('out', 'main');
+
+Dans le template :
+
+<ul>
+<!-- BEGIN LINK_BLOCK -->
+  <li><a href="{URL}">{LABEL}</a></li>
+<!-- END LINK_BLOCK -->
+</ul>
+

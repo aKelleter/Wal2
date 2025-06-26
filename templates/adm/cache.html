@@ -1,0 +1,32 @@
+{Header}
+<body>  
+    {SectionHeader}      
+    <main class="container mb-5"> 
+        {Navigation} 
+        <div class="main-div mt-5 p-2 bordered shadow-sm">
+            <h2 class="h4 text-center">Administration</h2>
+            <hr>
+            <div class="text-end mt-3">
+                <a class="btn btn-sm btn-info" href="{Url_adm_index}">Index</a>
+                <a class="btn btn-sm btn-info" href="{Url_adm_cache}">Cache</a>
+                <a class="btn btn-sm btn-info" href="{Url_adm_doc}">Doc</a>
+                <a class="btn btn-sm btn-info" href="{Url_adm_check}" target="_blank">Configuration check </a>
+                <a href="?clearCache=1&token={CsrfToken}" class="btn btn-sm btn-danger"
+                onclick="return confirm('Voulez-vous vraiment vider tout le cache ?')">
+                Vider le cache
+                </a>
+            </div>
+            <!-- Message de confirmation après suppression -->
+            {CacheMessage}
+            <ul style="list-style-type:none;">
+                <li></li>                    
+            </ul>
+            <div class="message bg-info">
+                {ListFilesCache}
+            </div>            
+        </div>
+        {Footer}
+    </main>
+    {JSSection}
+</body>
+</html>

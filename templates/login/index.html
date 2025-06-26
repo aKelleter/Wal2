@@ -1,0 +1,27 @@
+{Header}
+<body>
+    {SectionHeader} 
+    <main class="container mb-5"> 
+        {Navigation}            
+        {Error}
+        <div class="main-div mt-5 p-2 bordered shadow-sm text-muted w-50 mx-auto">
+            <h3 class="text-center">{STR_VEUILLEZ_VOUS_IDENTIFIER}</h3>
+            <hr>        
+            <form method="post">
+                <div class="mb-3">
+                    <label for="username">{STR_NOM_UTILISATEUR}</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password">{STR_MOT_DE_PASSE}</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>                
+                <input type="hidden" name="csrf_token" value="{Token_csrf}">
+                <button class="btn btn-primary">{STR_SE_CONNECTER}</button>
+            </form>
+        </div>
+    {Footer}
+    </main>
+    {JSSection}
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Fichiers inutiles spécifiques à macOS
+.DS_Store
+
+# Logs d'erreur
+error_log
+logs/*
+
+# Cache
+cache/*

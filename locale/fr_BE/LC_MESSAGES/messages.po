@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2025-06-26 14:55+0200\n"
+"PO-Revision-Date: 2025-06-26 14:55+0200\n"
+"Last-Translator: Alain Kelleter <alain.kelleter@kelleter.be>\n"
+"Language-Team: \n"
+"Language: fr_BE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-KeywordsList: T_\n"
+"X-Source-Language: fr\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: vendor\n"
+
+#: config/menu.php:27
+msgid "Accueil"
+msgstr ""
+
+#: config/menu.php:28
+msgid "Les rubriques"
+msgstr ""
+
+#: config/menu.php:29
+msgid "Page 1"
+msgstr ""
+
+#: config/menu.php:30
+msgid "Page 2"
+msgstr ""
+
+#: config/menu.php:31
+msgid "Page 3"
+msgstr ""
+
+#: config/menu.php:33
+msgid "Liens"
+msgstr ""
+
+#: config/menu.php:34
+msgid "Administration"
+msgstr ""
+
+#: config/menu.php:35
+msgid "Identification"
+msgstr ""
+
+#: locale/strToTranslate.php:5
+msgid "L'application a généré une erreur"
+msgstr ""
+
+#: locale/strToTranslate.php:6
+msgid "Bienvenue sur"
+msgstr ""
+
+#: locale/strToTranslate.php:7
+msgid "Les liens"
+msgstr ""
+
+#: locale/strToTranslate.php:8
+msgid "Mot de passe"
+msgstr ""
+
+#: locale/strToTranslate.php:9
+msgid "Nom d'utilisateur"
+msgstr ""
+
+#: locale/strToTranslate.php:10
+msgid "Se connecter"
+msgstr ""
+
+#: locale/strToTranslate.php:11
+msgid "Veuillez vous identifier"
+msgstr ""
+
+#: public/default/_classic_sample.php:32
+msgid ""
+"Ce site a pour objectif de rassembler et de présenter, de façon claire et "
+"synthétique, les principales commandes Git utiles au quotidien. Que vous "
+"soyez débutant ou utilisateur confirmé, vous trouverez ici des rappels "
+"rapides pour manipuler les branches, gérer vos commits, ou retrouver les "
+"commandes essentielles à l’aide de quelques clics."
+msgstr ""
+
+#: public/default/_classic_sample.php:33
+msgid ""
+"N’hésitez pas à explorer le menu pour accéder aux différentes rubriques."
+msgstr ""
+
+#: public/default/_classic_sample.php:34
+msgid "Bonne navigation !"
+msgstr ""
+
+#: public/default/page1.php:6
+msgid "Bienvenue sur la page 1"
+msgstr ""
+
+#: public/default/page2.php:6
+msgid "Bienvenue sur la page 2"
+msgstr ""
+
+#: public/default/page3.php:6
+msgid "Bienvenue sur la page 3"
+msgstr ""
+
+#: src/Module/Default/DefaultController.php:36
+msgid ""
+"est une application PHP modulaire sans framework, conçue autour des "
+"principes suivants :\n"
+"            <ul>\n"
+"                <li>Front Controller unique</li>\n"
+"                <li>Moteur de template maison</li>\n"
+"                <li>Routage personnalisé</li>\n"
+"                <li>Gestion de l’internationalisation (I18n) avec Gettext</"
+"li>\n"
+"                <li>Système d’erreurs et de cache intégrés</li>\n"
+"            </ul>\n"
+"            Ce projet est pensé pour être facilement réutilisable, découpé "
+"en modules, et personnalisable.\n"
+"        "
+msgstr ""
+
+#: src/Module/Default/DefaultController.php:46
+msgid ""
+"Il constitue un socle léger, clair et modulaire, idéal pour des prototypes "
+"ou des bases de projets professionnels structurés."
+msgstr ""
+
+#: src/Module/Default/DefaultController.php:47
+msgid "Profitez-en bien !"
+msgstr ""
+
+#: src/Module/Errors/ErrorsController.php:32
+msgid "Erreur - L'application a généré une erreur, celle-ci a été consignée"
+msgstr ""
+
+#: src/Module/Errors/ErrorsController.php:66
+msgid "Erreur 500 - Erreur de serveur interne"
+msgstr ""
+
+#: src/Module/Errors/ErrorsController.php:99
+msgid "Erreur 404 - Cette ressource n'existe pas"
+msgstr ""
+
+#: src/Module/Login/LoginController.php:35
+msgid "Nom d'utilisateur ou mot de passe invalide."
+msgstr ""
+
+#: src/Router/Router.php:55
+msgid "Chemin non autorisé"
+msgstr ""
+
+#: src/Router/Router.php:73
+msgid "Page introuvable."
+msgstr ""
+
+#: src/Router/Router.php:74
+msgid "La page demandée n'hexiste pas."
+msgstr ""
+
+#: src/UI/Layout.php:155
+msgid "Déconnexion"
+msgstr ""

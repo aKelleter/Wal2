@@ -1,0 +1,24 @@
+{Header}
+<body>  
+    {SectionHeader}      
+    <main class="container mb-5"> 
+        {Navigation} 
+        <div class="main-div mt-5 p-2 bordered shadow-sm">
+            <h2 class="h4 text-center">Administration</h2>
+            <hr>
+            <div class="text-end mt-3">
+                <a class="btn btn-sm btn-info" href="{Url_adm_index}">Index</a>
+                <a class="btn btn-sm btn-info" href="{Url_adm_cache}">Cache</a>
+                <a class="btn btn-sm btn-info" href="{Url_adm_doc}">Doc</a>
+                <a class="btn btn-sm btn-info" href="{Url_adm_check}" target="_blank">Configuration check </a>               
+            </div>
+            <div class="message text-center">{Message}</div>           
+            <div class="message bg-info text-center mt-4">
+                {ListFilesCache}
+            </div>
+        </div>
+        {Footer}
+    </main>
+    {JSSection}
+</body>
+</html>

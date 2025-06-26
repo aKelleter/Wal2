@@ -1,0 +1,195 @@
+// -------------------------------------------
+// IMPORTS (Fonts & Icons)
+// -------------------------------------------
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+// -------------------------------------------
+// VARIABLES
+// -------------------------------------------
+$blue-very-light: #e3f2fd;
+$blue-light:      #90caf9;
+$blue:            #1976d2;
+$blue-dark:       #0d47a1;
+$orange:          #ff9800;
+$text:            rgba(21,21,21,0.5);
+
+$alert-info-bg:        rgba(167, 210, 236, 0.5);
+$alert-info-border:    rgba(69, 89, 103, 0.5);
+$alert-secondary-bg:   rgba(190, 235, 234, 0.441);
+$alert-secondary-border: rgba(55, 80, 79, 0.441);
+
+$bordered:   rgba(47, 52, 51, 0.401);
+
+// -------------------------------------------
+// BASE & BODY
+// -------------------------------------------
+body {
+  max-width: 1024px;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1em;
+  line-height: 1.6;  
+  transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fafeff 5%, #9fb8c3 50%);
+}
+
+// -------------------------------------------
+// TYPO & UTILITAIRES
+// -------------------------------------------
+.text-justify {  
+  text-align: justify;
+}
+.bordered {
+  border: 1px solid $bordered;
+  border-radius: 0.5em; 
+}
+.text-blue-dark {
+  color: $blue-dark;
+}
+
+// -------------------------------------------
+// STRUCTURE & LAYOUT
+// -------------------------------------------
+.main-div {
+  background: linear-gradient(135deg, #dae3e5 5%, #cce0e9 50%);
+}
+
+// -------------------------------------------
+// HEADER
+// -------------------------------------------
+.header-custom {
+  background: linear-gradient(135deg, $blue-dark, $blue);
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 4px 16px rgba(13, 71, 161, 0.08);
+}
+
+// -------------------------------------------
+// NAVBAR
+// -------------------------------------------
+.navbar-blue {
+  background: linear-gradient(135deg, $blue-dark, $blue) !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(33, 102, 175, 0.12);
+
+  .nav {
+    gap: 0.18rem !important;
+  }
+  .nav-link {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.96rem !important;
+    margin: 0 0.05rem !important;
+    line-height: 1.1 !important;
+    border-radius: 6px !important;
+    color: #fff !important;
+    font-weight: 500;
+    margin: 0 0.2rem;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover,
+    &.active,
+    &.link-orange {
+      background: #f89b29 !important;
+      color: #fff !important;
+    }
+  }
+  // Responsive scroll
+  @media (max-width: 900px) {
+    .nav-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+    }
+    .nav {
+      flex-wrap: nowrap !important;
+      min-width: max-content;
+      width: 100%;
+    }
+    .nav-link {
+      white-space: nowrap;
+    }
+  }
+}
+
+/* -------------------------------------------
+   ALERTES & MESSAGES
+-------------------------------------------- */
+.alert-info {
+  --bs-alert-color: #{$text};
+  --bs-alert-bg: #{$alert-info-bg};
+  --bs-alert-border-color: #{$alert-info-border};
+  --bs-alert-link-color: var(--bs-info-text-emphasis);
+}
+.alert-secondary {
+  --bs-alert-color: #{$text};
+  --bs-alert-bg: #{$alert-secondary-bg};
+  --bs-alert-border-color: #{$alert-secondary-border};
+  --bs-alert-link-color: var(--bs-info-text-emphasis);
+}
+.alert.fade {
+  transition: opacity 0.5s ease-out;
+}
+.bg-danger  { background-color: hsla(344, 78%, 71%, 0.729) !important; }
+.bg-success { background-color: hsla(131, 78%, 71%, 0.605) !important; }
+.bg-warning { background-color: hsla(61,  78%, 71%, 0.612) !important; }
+.bg-info    { background-color: hsla(183, 73%, 71%, 0.59)  !important; }
+
+.div-message {
+  font-size: 1.3em;
+}
+
+/* -------------------------------------------
+   SECTIONS & CARDS
+-------------------------------------------- */
+.card-blue {
+  background: $blue-light;
+  border: none;
+  border-radius: 16px;
+}
+.card-title {
+  font-weight: 600;
+}
+
+/* -------------------------------------------
+   FOOTER
+-------------------------------------------- */
+.bg-blue-footer {
+  background: $blue-dark;
+  border-radius: 14px 14px 0 0;
+  margin-top: 2rem;
+}
+
+/* -------------------------------------------
+   CODE & PRE (highlight.js)
+-------------------------------------------- */
+pre {
+  background: #1b2128 !important;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 1rem;
+  code {
+    font-size: 1em;
+    border-radius: 8px;
+    background: transparent !important;
+    color: #fff;
+  }
+}
+pre.vdump, pre.prtr {
+  background: $blue-light !important;
+}
+
+/* -------------------------------------------
+   RESPONSIVE (autres tweaks)
+-------------------------------------------- */
+@media (max-width: 600px) {
+  .header-custom { padding: 2rem 1rem; }
+  .card-blue     { padding: 0.5rem; }
+}
+@media (max-width: 1100px) {
+  #btn-top {
+    left: auto !important;
+    right: 2rem !important;
+  }
+}

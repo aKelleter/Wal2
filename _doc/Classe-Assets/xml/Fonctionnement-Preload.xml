@@ -1,0 +1,61 @@
+Pour une performance optimale, la règle générale :
+--------------------------------------------------
+
+    - Les <link rel="preload"> doivent être placés avant les <link rel="stylesheet"> et avant tout autre ressource dans le <head>.
+    - Le navigateur lit le HTML dans l’ordre : il “voit” les preloads, commence à télécharger les fichiers, puis applique les CSS en les rencontrant plus loin.
+
+Donc dans un template :
+-----------------------
+
+<html>
+<head>
+  ...
+  <?= \App\UI\Assets::renderPreloads() ?>  <!-- 1. précharger d’abord -->
+  <?= \App\UI\Assets::renderStyles() ?>    <!-- 2. charger/appliquer les CSS ensuite -->
+  ...
+</head>
+<body>
+  ...
+  <?= \App\UI\Assets::renderScripts() ?>   <!-- généralement juste avant </body> -->
+</body>
+</html>
+
+Résumé :
+--------
+    - Toujours placer les preloads d’abord dans le <head>, juste après les éventuelles meta et le titre.
+    - Ensuite viens les feuilles de styles, puis le JS si besoin dans le head (sinon en bas).
+
+
+Explication rapide :
+--------------------
+
+    <link rel="preload" ... as="style" onload="this.rel='stylesheet'">
+    → c’est “asynchrone”: le CSS arrive vite, mais n’est appliqué qu’une fois chargé.
+
+    <link rel="stylesheet" ...>
+    → c’est “bloquant” pour le rendu, mais garanti d’appliquer le style dès le parsing du HTML.
+
+    Donc si tu utilises uniquement le preload+onload,
+    il faut absolument ajouter le fallback <noscript><link rel="stylesheet" ...></noscript>
+    → Mais ce fallback ne sert que si JS est désactivé, pas en cas de bug/latence JS.
+
+
+La meilleure pratique (recommandée par Google/Lighthouse) :
+-----------------------------------------------------------
+
+      - Soit tu fais seulement des <link rel="stylesheet"> (le plus fiable et compatible)
+      - Soit tu combines vraiment les deux: preload d’abord, stylesheet ensuite
+      (mais dans ce cas le navigateur télécharge le CSS deux fois si mal configuré)
+
+Exemple :
+---------
+
+<!-- Preload en premier (peut améliorer le rendu initial sur réseau lent) -->
+<link rel="preload" href="/assets/css/styles.css" as="style">
+
+<!-- Feuille de style classique obligatoire -->
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+  - Tu bénéficies du préchargement (le navigateur commence à charger la ressource plus tôt),
+  - Le style est garanti d’être appliqué immédiatement à l’arrivée du CSS,
+  - Aucun souci de flash blanc ou de page “non stylée”.

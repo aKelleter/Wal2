@@ -1,0 +1,104 @@
+📚 Utilisation moderne de Template
+1️⃣ Préparer un template HTML (ex: templates/page.html)
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{TITLE}</title>
+</head>
+<body>
+    <h1>{TITLE}</h1>
+    <div>
+        {CONTENT}
+    </div>
+    <!-- BEGIN FOOTER_BLOCK -->
+    <footer>
+        <small>{FOOTER}</small>
+    </footer>
+    <!-- END FOOTER_BLOCK -->
+</body>
+</html>
+
+2️⃣ Initialiser et utiliser la classe Template dans ton code PHP
+
+Exemple :
+
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../../bootstrap.php'; // ajuste le chemin selon ton projet
+
+use App\UI\Template;
+
+// Chemin racine des fichiers HTML de template
+$templateDir = ROOT_PATH . '/templates';
+
+// 1. Instancie le moteur de template
+$tpl = new Template($templateDir);
+
+// 2. Associe le nom logique "main" à ton fichier de template
+$tpl->setFile('main', 'page.html');
+
+// 3. Définit les variables à injecter
+$tpl->setVar([
+    'TITLE' => 'Ma page moderne avec Template',
+    'CONTENT' => '<p>Ceci est un exemple de contenu dynamique injecté par PHP.</p>',
+    'FOOTER' => 'Un moteur de template ultra-léger sans dépendance'
+]);
+
+// 4. (Optionnel) blocs BEGIN/END
+$tpl->setBlock('main', 'FOOTER_BLOCK');
+
+// 5. Affiche le rendu final (tu peux aussi utiliser $tpl->get('main'))
+$tpl->pparse('out', 'main');
+
+
+3️⃣ Pour un rendu dans une variable (pour logs, AJAX, tests...)
+
+$html = $tpl->get('main'); // récupère le rendu final dans une chaîne
+
+4️⃣ Bonnes pratiques et astuces
+
+    Tu peux avoir plusieurs templates :
+
+$tpl->setFile([
+    'main' => 'layout.html',
+    'header' => 'header.html',
+    'footer' => 'footer.html'
+]);
+
+Blocs conditionnels (ex: listes) :
+Utilise BEGIN/END dans ton HTML, puis :
+
+    $tpl->setBlock('main', 'LISTE_LIVRES');
+    // Pour chaque livre, setVar puis parse('LISTE_LIVRES', 'LISTE_LIVRES', true);
+
+    Debug :
+    $tpl->debug = 4; pour afficher les étapes.
+
+    Variables non utilisées :
+    Change le comportement avec $tpl->setUnknowns('keep'|'remove'|'comment');
+
+5️⃣ Structure recommandée
+
+/src/UI/Template.php      ← la classe
+/templates/               ← tous tes .html (purs, sans PHP !)
+/public/...               ← tes points d’entrée
+
+
+6️⃣ Résumé des méthodes principales
+
+    __construct($root, $unknowns = 'remove')
+
+    setFile($varname, $filename)
+
+    setVar($nom, $valeur)
+
+    setBlock($parent, $block)
+
+    parse($cible, $var, $append=false)
+
+    pparse($cible, $var, $append=false) // affiche
+
+    get($var) // retourne une chaîne prête à l’emploi

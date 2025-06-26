@@ -1,0 +1,73 @@
+<h1>WaL-2 – Guide de démarrage</h1>
+
+<p><em>Ce document présente le fonctionnement interne du projet <strong>WaL-2</strong>, destiné à servir de base de démarrage (bootstrap) pour d'autres projets PHP modulaires.</em></p>
+
+<hr />
+
+<h2>1. Présentation générale</h2>
+
+<p>WaL-2 est une application PHP modulaire sans framework, conçue autour des principes suivants :</p>
+
+<ul>
+<li>Front Controller unique</li>
+<li>Moteur de template maison</li>
+<li>Routage personnalisé</li>
+<li>Gestion de l’internationalisation (I18n) avec Gettext</li>
+<li>Système d’erreurs et de cache intégrés</li>
+</ul>
+
+<p>Ce projet est pensé pour être facilement réutilisable, découpé en modules, et personnalisable.</p>
+
+<hr />
+
+<h2>2. Fonctionnement général</h2>
+
+<p>Le fichier d'entrée principal est <code>public/index.php</code>. Il initialise le bootstrap, configure les assets globaux, puis appelle le routeur (<code>Router::render()</code>).</p>
+
+<p>Le fichier <code>bootstrap.php</code> charge :
+- les constantes de configuration (<code>conf.php</code>)
+- la connexion à la base de données (<code>Connection::init</code>)
+- le système d'authentification (<code>Auth::init</code>)
+- la langue via <code>I18n::init()</code>
+- la gestion des erreurs via <code>ErrorHandler::register()</code></p>
+
+<p>Le moteur de template (<code>App\UI\Template</code>) permet d’afficher des fichiers HTML avec des blocs et des variables dynamiques. Il est compatible avec le cache.</p>
+
+<hr />
+
+<h2>3. Classes principales et rôles</h2>
+
+<ul>
+<li><strong>App\Router\Router</strong> : Gère les routes de l'application et résout le contrôleur à appeler.</li>
+<li><strong>App\UI\Template</strong> : Moteur de template léger (setFile, setVar, parse, pparse…).</li>
+<li><strong>App\UI\Layout</strong> : Génère les blocs d’interface standard (Header, Footer, etc.).</li>
+<li><strong>App\UI\Assets</strong> : Ajoute dynamiquement les fichiers CSS et JS globaux ou contextuels.</li>
+<li><strong>App\Core\ErrorHandler</strong> : Gère les erreurs PHP, exceptions et logs.</li>
+<li><strong>App\I18n\I18n</strong> : Initialise et configure Gettext pour les traductions.</li>
+<li><strong>App\Auth\Auth</strong> : Système d’authentification (login, sessions).</li>
+<li><strong>App\Security\Csrf</strong> : Génère et vérifie les jetons CSRF.</li>
+<li><strong>App\Security\Security</strong> : Nettoyage des données d’entrée (<code>sanitizeInput</code>, <code>sanitizeArray</code>).</li>
+<li><strong>App\Core\CacheManager</strong> : Gère les fichiers de cache HTML.</li>
+<li><strong>App\Helpers\Helpers</strong> : Fonctions utilitaires (ex : Gettext, formatting).</li>
+<li><strong>App\Database\Connection</strong> : Initialise la connexion PDO partagée.</li>
+</ul>
+
+<hr />
+
+<h2>4. Utiliser Git.Docs comme base pour un nouveau projet</h2>
+
+<h3>Étapes conseillées :</h3>
+
+<ol>
+<li><strong>Copier le projet</strong> dans un nouveau dossier.</li>
+<li><strong>Renommer le module <code>default/</code></strong> selon vos besoins : <code>blog/</code>, <code>admin/</code>, etc.</li>
+<li><strong>Créer d'autres modules</strong> (optionnel)</li>
+<li><strong>Adapter les templates</strong> HTML dans <code>/templates</code>.</li>
+<li><strong>Modifier les routes</strong> et leurs comportements dans <code>Router.php</code>.</li>
+<li><strong>Configurer la base de données</strong> dans <code>config/database.php</code>.</li>
+<li><strong>Ajouter vos propres classes</strong> dans <code>src/</code>.</li>
+<li><strong>Configurer vos traductions</strong> dans <code>/locale/</code> avec <code>.po/.mo</code>.</li>
+<li><strong>Gérer le cache et les erreurs</strong> grâce aux classes dédiées.</li>
+</ol>
+
+<p>Ce projet constitue un socle léger, clair et modulaire, idéal pour des prototypes ou des bases de projets professionnels structurés.</p>
