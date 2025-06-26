@@ -12,7 +12,7 @@ require_once ROOT_PATH . '/autoload.php';
 require_once ROOT_PATH . '/config/conf.php';
 require_once ROOT_PATH . '/config/database.php';
 // Chargement des fichiers de fonctions
-require_once ROOT_PATH . '/app/function/app-fct.php'; 
+require_once ROOT_PATH . '/app/function/core_helpers.php'; 
 
 // Chargement des classes nécessaires
 use App\Database\Connection;
