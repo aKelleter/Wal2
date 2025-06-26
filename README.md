@@ -2,10 +2,6 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 
-**WaL-2** est une mini-application PHP qui synthétise les principales commandes Git utiles au quotidien, avec une interface claire, responsive et pédagogique.
-
----
-
 ## Présentation générale
 
 WaL-2 est une application PHP modulaire sans framework, conçue autour des principes suivants :
