@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 const APP_NAME = "WaL-2";
-const APP_VER = "1.0.2-27062025-1730";
+const APP_VER = "1.0.2-27062025-1740";
 const BASE_URL = '/prj/Wal2';
 const DEFAULT_MODULE = 'default';
 

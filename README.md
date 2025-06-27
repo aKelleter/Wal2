@@ -5,7 +5,7 @@
 
 ## Présentation générale
 
-WaL-2 est une application PHP modulaire sans framework, conçue autour des principes suivants :
+WaL-2 (**W**eb **A**pplication **L**auncher) est une application PHP modulaire sans framework, conçue autour des principes suivants :
 
 - Front Controller unique  
 - Moteur de template maison  
