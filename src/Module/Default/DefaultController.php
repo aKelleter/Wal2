@@ -33,7 +33,7 @@ final class DefaultController
         $tpl->setVar('JSSection', Layout::getJSSection());
 
         // Chaines de traduction spécifiques à la page
-        $tpl->setVar('STR_PRESENTATION', T_("est une application PHP modulaire sans framework, conçue autour des principes suivants :
+        $tpl->setVar('STR_PRESENTATION', '(<b>W</b>eb <b>A</b>pplication <b>L</b>auncher) '.T_("est une application PHP modulaire sans framework, conçue autour des principes suivants :
             <ul>
                 <li>Front Controller unique</li>
                 <li>Moteur de template maison</li>
@@ -55,7 +55,7 @@ final class DefaultController
     /**
      * Contrôleur des pages public/default/page1.php, page2.php, page3.php
      * 
-     * @param array $datas 
+     * @param array $datas ['title' => 'votre titre', 'content' => 'votre contenu']
      * @return void 
      */
     public static function page(array $datas): void

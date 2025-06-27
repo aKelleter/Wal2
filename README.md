@@ -1,6 +1,6 @@
 # WaL-2
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.0.2-blue)
 
 ## Présentation générale
 

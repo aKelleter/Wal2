@@ -1,0 +1,34 @@
+# Exemple de pipeline CI pour un projet PHP avec PHPUnit (GitHub Actions)
+# Placez ce fichier dans .github/workflows/ci.yml
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Installer PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo_sqlite, gettext
+
+      - name: Afficher la version de PHP
+        run: php -v
+
+      - name: Installer les dépendances (optionnel)
+        run: |
+          if [ -f composer.json ]; then composer install --no-interaction; fi
+
+      - name: Lancer les tests PHPUnit
+        run: |
+          if [ -f tools/phpunit.phar ]; then php tools/phpunit.phar --testdox tests; fi

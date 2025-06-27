@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 const APP_NAME = "WaL-2";
-const APP_VER = "1.0.1-25062025-1715";
+const APP_VER = "1.0.2-27062025-1720";
 const BASE_URL = '/prj/Wal2';
 const DEFAULT_MODULE = 'default';
 
@@ -18,3 +18,4 @@ define('DEBUG', IS_DEV || IS_ACC);
 
 define('LOG_PATHFILE', ROOT_PATH . '/logs/' . ENV . '-' . date('Y-m-d') . '.log');
 define('CACHE_PATH', ROOT_PATH . '/cache/' . ENV);
+
