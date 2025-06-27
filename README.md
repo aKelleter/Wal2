@@ -1,6 +1,7 @@
 # WaL-2
 
 ![Version](https://img.shields.io/badge/version-1.0.2-blue)
+![CI](https://github.com/aKelleter/Wal2/actions/workflows/ci.yml/badge.svg)
 
 ## Présentation générale
 
