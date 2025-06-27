@@ -77,8 +77,16 @@ class DefaultControllerTest extends TestCase
 Documentation pour PHPUnit 12.2 : 
 https://docs.phpunit.de/en/12.2/
 
-
-
 La page d'accueil du projet :
 https://phpunit.de/index.html
+
+
+Présentation des tests unitaires :
+https://fr.wikipedia.org/wiki/Test_unitaire
+
+
+Apprentissage des tests unitaires :
+https://openclassrooms.com/fr/courses/7159306-testez-vos-applications-front-end-avec-javascript/7332786-adoptez-la-methodologie-des-tests-unitaires
+
+
 
